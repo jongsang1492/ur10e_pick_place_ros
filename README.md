@@ -1,8 +1,10 @@
 UR10e Pick and Place Project (ROS + MoveIt)
 
 This project demonstrates a pick-and-place operation using the Universal Robots UR10e robotic arm in a simulated environment. The system was implemented using ROS Noetic and MoveIt, and programmed in Python.
-
+Demo (MP4)
 [![Watch the demo](./imgs/screenshot.png)](./videos/ros_ur10e_pick_place_demo.mp4)
+Demo (GIF)
+![ros_ur10e_pick_place_demo](https://github.com/user-attachments/assets/eb5a9157-516f-4ba4-bb47-5cd46bff3a72)
 
 FEATURES:
 - Cartesian path planning with multiple waypoints
@@ -42,3 +44,5 @@ Author
 Jongsang Yoo
 Mechanical Engineering @ University of Toronto
 GitHub: @jongsang1492
+
+
