@@ -3,36 +3,35 @@ import rospy
 import moveit_commander
 import geometry_msgs.msg
 
-# 노드 초기화
+# Initialize the ROS node
 rospy.init_node("ur10e_pose_move_node", anonymous=True)
 moveit_commander.roscpp_initialize([])
 
-# MoveIt Commander 객체 생성
+# Create MoveIt Commander interfaces
 robot = moveit_commander.RobotCommander()
 group = moveit_commander.MoveGroupCommander("manipulator")
 
-# 현재 상태 초기화
+# Clear any previous targets and stop residual movement
 group.stop()
 group.clear_pose_targets()
 
-# 이동할 위치 정의 (Pick 위치 예시)
+# Define the target pose (example pick position)
 target_pose = geometry_msgs.msg.Pose()
 target_pose.position.x = 0.4
 target_pose.position.y = 0.0
 target_pose.position.z = 0.3
-target_pose.orientation.w = 1.0  # 간단하게 정면 방향
+target_pose.orientation.w = 1.0  # Facing forward (simple orientation)
 
-# 목표 pose 설정하고 이동
+# Set the target pose and execute the motion
 group.set_pose_target(target_pose)
 success = group.go(wait=True)
 
-# 마무리
+# Final cleanup
 group.stop()
 group.clear_pose_targets()
 
-# 결과 출력
+# Print the result
 if success:
-    rospy.loginfo("Pose 이동 성공!")
+    rospy.loginfo("Pose movement succeeded!")
 else:
-    rospy.logwarn("Pose 이동 실패!")
-
+    rospy.logwarn("Pose movement failed!")
